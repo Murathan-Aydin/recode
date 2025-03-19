@@ -1,17 +1,14 @@
-import { useState, useEffect } from "react";
+'use client';
+import { useState } from "react";
 
 export default function Home() {
     const [tweet, setTweet] = useState("");
-
-    useEffect(() => {
-        
-    }, []);
 
     const submitTweet =  async (e: any) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-        const response = await fetch("/api/submit", {
+        const response = await fetch("/api/", {
             method: "POST",
             body: formData,
         });
