@@ -2,9 +2,14 @@
 
 import { useState, useEffect } from "react";
 
+type Tweet = {
+    id: number;
+    tweet: string;
+};
+
 export default function Home() {
     const [tweet, setTweet] = useState("");
-    const [tweets, setTweets] = useState([]);
+    const [tweets, setTweets] = useState<Tweet[]>([]);
 
     useEffect(() => {
         getTweets();
@@ -17,8 +22,6 @@ export default function Home() {
         const data = await reponse.json();
 
         console.log(data);
-        
-
         setTweets(data);
     }
 
@@ -51,6 +54,12 @@ export default function Home() {
                 />
                 <button type="submit">Tweet</button>
             </form>
+
+            <ul>
+                {tweets.map((tweet: any) => (
+                    <li key={tweet.id}>{tweet.tweet}</li>
+                ))}
+            </ul>
         </>
     );
 }
