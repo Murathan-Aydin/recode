@@ -5,7 +5,10 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { tweet } = body;
 
-    const data = await connection.query("INSERT INTO tweets (user_id, parent_id, type, tweet) VALUES (?, ?, ?, ?)", [1, null, "orignal", tweet]); 
+    console.log(tweet);
+    
+
+    const data = await connection.query("INSERT INTO tweets (user_id, parent_id, type, tweet) VALUES (?, ?, ?, ?)", [1, null, "original", tweet]); 
 
     return NextResponse.json(data);
 }
